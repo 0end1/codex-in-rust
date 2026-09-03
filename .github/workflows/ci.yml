@@ -58,19 +58,17 @@ jobs:
         with:
           components: rustfmt, clippy
       - name: Linux 沙箱依赖（bubblewrap，代码落地后生效）
+        # 非 Linux runner 默认 shell 是 pwsh，整段 step 跳过即可，
+        #   避免 bash 语法 `[ "$RUNNER_OS" = "Linux" ]` 在 PowerShell 下抛 exit 1。
+        # TODO(代码落地): GitHub Linux runner 对 unshare 有限制，
+        #   第 11 章 bwrap 集成测试需先校准容器/runner 能力再完整启用。
+        if: runner.os == 'Linux' && hashFiles('code/crates/**') != ''
         run: |
-          if [ "$RUNNER_OS" = "Linux" ] && [ -d code/crates ]; then
-            sudo apt-get update && sudo apt-get install -y bubblewrap
-          fi
-          # TODO(代码落地): GitHub Linux runner 对 unshare 有限制，
-          #   第 11 章 bwrap 集成测试需先校准容器/runner 能力再完整启用。
+          sudo apt-get update && sudo apt-get install -y bubblewrap
       - name: fmt + clippy + test
+        if: hashFiles('code/crates/**') != ''
         run: |
-          if [ -d code/crates ]; then
-            cd code
-            cargo fmt --check
-            cargo clippy --workspace --all-targets -- -D warnings
-            cargo test --workspace
-          else
-            echo "code/crates 尚未填实（见 code/README.md），跳过 Rust 检查。"
-          fi
+          cd code
+          cargo fmt --check
+          cargo clippy --workspace --all-targets -- -D warnings
+          cargo test --workspace
