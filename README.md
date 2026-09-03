@@ -3,8 +3,8 @@
 > AI Agent 系统设计与 AI 软件工程 —— 用 Rust 从零实现一个 `mini-codex`，
 > 第 22 章用它来开发它自己。
 
-![CI](https://img.shields.io/github/actions/workflow/status/<owner>/codex-in-rust/ci.yml?label=ci)
-[![在线阅读](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-mdBook-blue)](https://<owner>.github.io/codex-in-rust/)
+![CI](https://img.shields.io/github/actions/workflow/status/0end1/codex-in-rust/ci.yml?label=ci)
+[![在线阅读](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-mdBook-blue)](https://0end1.github.io/codex-in-rust/)
 ![License](https://img.shields.io/badge/%E6%96%87%E5%AD%97-CC%20BY--NC--ND%204.0-lightgrey)
 ![License](https://img.shields.io/badge/%E4%BB%A3%E7%A0%81-Apache--2.0-green)
 
@@ -31,7 +31,7 @@ CLI 与测试都叫 **`mini-codex`** —— 仓库名是书，产品名是代码
 
 ```bash
 # 在线阅读（mdBook，部署后生效）
-open https://<owner>.github.io/codex-in-rust/
+open https://0end1.github.io/codex-in-rust/
 
 # 本地读
 mdbook build book/ && open book/book/index.html
@@ -43,7 +43,7 @@ tools/verify/run_all.sh
 想从某一部分开始实现（而不是从头读）：
 
 ```bash
-git clone https://github.com/<owner>/codex-in-rust.git
+git clone https://github.com/0end1/codex-in-rust.git
 git checkout part3          # 第 10 章起点：安全篇（tags 随实现陆续发布）
 cd code && cargo test       # 书里绝大多数测试不联网，几毫秒跑完
 ```
@@ -81,7 +81,7 @@ codex-in-rust/
 勘误（typo / 技术错误 / 代码不符）是我们最高价值的贡献，模板见
 [`ISSUE_TEMPLATE/1_errata.md`](.github/ISSUE_TEMPLATE/1_errata.md)。
 **读者挑战没有官方答案** —— 去
-[Discussions](https://github.com/<owner>/codex-in-rust/discussions) 贴解法，互相评审，
+[Discussions](https://github.com/0end1/codex-in-rust/discussions) 贴解法，互相评审，
 维护者不揭底。
 
 细节：见 [CONTRIBUTING.md](CONTRIBUTING.md)。
@@ -91,4 +91,4 @@ codex-in-rust/
 - 书稿（`book/`、README）：[CC BY-NC-ND 4.0](LICENSE-TEXT)
 - 代码与工具（`code/`、`tools/`、`.github/`、`scripts/`）：[Apache-2.0](LICENSE-CODE)
 
-发布前待办：作者署名 / GitHub `<owner>` 占位替换 / `rust-toolchain.toml` 版本最终化。
+发布前待办：`rust-toolchain.toml` 版本最终化。

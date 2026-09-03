@@ -1,15 +1,13 @@
 [book]
 title = "用 Rust 造一个 Codex"
-# TODO(发布前): 填作者署名（与 LICENSE 持有者一致）
-authors = ["<作者名待替换>"]
+authors = ["王智勇"]
 language = "zh"
 description = "AI Agent 系统设计与 AI 软件工程——从零到自举，用 Rust 逐步实现一个 mini-codex。"
 src = "src"
 
 [output.html]
-# TODO(发布前): 把 <owner> 换成实际 GitHub 用户名/组织
-git-repository-url = "https://github.com/<owner>/codex-in-rust"
-edit-url-template = "https://github.com/<owner>/codex-in-rust/edit/main/book/src/{path}"
+git-repository-url = "https://github.com/0end1/codex-in-rust"
+edit-url-template = "https://github.com/0end1/codex-in-rust/edit/main/book/src/{path}"
 default-theme = "light"
 preferred-dark-theme = "navy"
 
