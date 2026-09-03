@@ -37,7 +37,7 @@ jobs:
         with:
           # Pages 首次启用必须作者侧在仓库 Settings → Pages 手动切到
           #   “GitHub Actions”；此参数仅在已启用后能复用。
-          enablerment: true
+          enablement: true
       - name: 上传站点产物
         uses: actions/upload-pages-artifact@v3
         with:
