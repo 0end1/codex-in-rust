@@ -4,8 +4,8 @@
 
 ## 找活干
 
-- [`good first issue`](https://github.com/<owner>/mini-codex/labels/good%20first%20issue)：小勘误，适合第一次来。
-- [`勘误`](https://github.com/<owner>/mini-codex/labels/%E5%8B%98%E8%AF%AF) label 下的 issue。
+- [`good first issue`](https://github.com/<owner>/codex-in-rust/labels/good%20first%20issue)：小勘误，适合第一次来。
+- [`勘误`](https://github.com/<owner>/codex-in-rust/labels/%E5%8B%98%E8%AF%AF) label 下的 issue。
 - 报新 bug / 新勘误：用对应 issue 模板，别开空白 issue。
 
 ## 提勘误的黄金标准

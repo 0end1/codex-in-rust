@@ -43,7 +43,7 @@
 
 ## 写作与配套建议
 
-- **代码仓库**：随书公开 mini-codex 仓库，每个 Part 一个 git tag，读者可 checkout 到任意章节起点。
+- **代码仓库**：随书公开 codex-in-rust 仓库，每个 Part 一个 git tag，读者可 checkout 到任意章节起点。
 - **每章配套**：`examples/` 下可独立运行的小样例（新手单独练 Rust 特性用）。
 - **读者挑战**：每章末尾放 2–3 个“不写答案”的动手题，答案在下一章开头自然揭晓。
 - **避坑专栏**：每章一个“我踩过的坑”，比如 `claude-*` 模型名必须在 Ollama 兜底之前解析、seccomp 必须豁免 AF_UNIX、exec 路径默认不持久化 Extended 事件导致审计丢内容。

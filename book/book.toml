@@ -8,8 +8,8 @@ src = "src"
 
 [output.html]
 # TODO(发布前): 把 <owner> 换成实际 GitHub 用户名/组织
-git-repository-url = "https://github.com/<owner>/mini-codex"
-edit-url-template = "https://github.com/<owner>/mini-codex/edit/main/book/src/{path}"
+git-repository-url = "https://github.com/<owner>/codex-in-rust"
+edit-url-template = "https://github.com/<owner>/codex-in-rust/edit/main/book/src/{path}"
 default-theme = "light"
 preferred-dark-theme = "navy"
 

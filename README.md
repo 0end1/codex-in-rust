@@ -3,8 +3,8 @@
 > AI Agent 系统设计与 AI 软件工程 —— 用 Rust 从零实现一个 `mini-codex`，
 > 第 22 章用它来开发它自己。
 
-![CI](https://img.shields.io/github/actions/workflow/status/<owner>/mini-codex/ci.yml?label=ci)
-[![在线阅读](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-mdBook-blue)](https://<owner>.github.io/mini-codex/)
+![CI](https://img.shields.io/github/actions/workflow/status/<owner>/codex-in-rust/ci.yml?label=ci)
+[![在线阅读](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-mdBook-blue)](https://<owner>.github.io/codex-in-rust/)
 ![License](https://img.shields.io/badge/%E6%96%87%E5%AD%97-CC%20BY--NC--ND%204.0-lightgrey)
 ![License](https://img.shields.io/badge/%E4%BB%A3%E7%A0%81-Apache--2.0-green)
 
@@ -15,6 +15,9 @@
 **是什么**：一本随书代码开源的书。22 章，五个 Part，从“最小 Agent 循环”一路推到
 “用 mini-codex 开发 mini-codex”（自举）。每一章结束，对应仓库里的一个 commit；
 每个 Part 结束，打一个 `partN` tag —— 想从第 N 章开始？`git checkout partN`。
+
+**名字**：本仓库是 `codex-in-rust`（对应书名《用 Rust 造一个 Codex》）；书中从零实现的产品、
+CLI 与测试都叫 **`mini-codex`** —— 仓库名是书，产品名是代码。
 
 **不是什么**：不是可以直接上生产的 Codex 竞品。它是教学参考实现——
 它存在的目的是让你读得懂、拆得开、改得动，然后自己造一个。
@@ -28,7 +31,7 @@
 
 ```bash
 # 在线阅读（mdBook，部署后生效）
-open https://<owner>.github.io/mini-codex/
+open https://<owner>.github.io/codex-in-rust/
 
 # 本地读
 mdbook build book/ && open book/book/index.html
@@ -40,7 +43,7 @@ tools/verify/run_all.sh
 想从某一部分开始实现（而不是从头读）：
 
 ```bash
-git clone https://github.com/<owner>/mini-codex.git
+git clone https://github.com/<owner>/codex-in-rust.git
 git checkout part3          # 第 10 章起点：安全篇（tags 随实现陆续发布）
 cd code && cargo test       # 书里绝大多数测试不联网，几毫秒跑完
 ```
@@ -48,7 +51,7 @@ cd code && cargo test       # 书里绝大多数测试不联网，几毫秒跑�
 ## 仓库结构
 
 ```
-mini-codex/
+codex-in-rust/
 ├─ book/                 # 书（mdBook 源：前言 / 5 Part / 22 章 / 附录）
 ├─ code/                 # 随书实现（Rust workspace，= part5 最终态，抽取归位中）
 ├─ tools/verify/         # 书稿 ↔ 代码一致性检查（逐块 rustc + 符号核验）
@@ -78,7 +81,7 @@ mini-codex/
 勘误（typo / 技术错误 / 代码不符）是我们最高价值的贡献，模板见
 [`ISSUE_TEMPLATE/1_errata.md`](.github/ISSUE_TEMPLATE/1_errata.md)。
 **读者挑战没有官方答案** —— 去
-[Discussions](https://github.com/<owner>/mini-codex/discussions) 贴解法，互相评审，
+[Discussions](https://github.com/<owner>/codex-in-rust/discussions) 贴解法，互相评审，
 维护者不揭底。
 
 细节：见 [CONTRIBUTING.md](CONTRIBUTING.md)。

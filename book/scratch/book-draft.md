@@ -94,7 +94,7 @@
 
 ### 代码仓库与 git tag
 
-随书代码在 mini-codex 仓库，每个 Part 结束打一个 tag：
+随书代码在 codex-in-rust 仓库（书中从零实现的产品叫 mini-codex），每个 Part 结束打一个 tag：
 
 ```
 part0    第 1-2 章结束

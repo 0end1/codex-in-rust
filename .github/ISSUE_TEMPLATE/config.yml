@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: 读者挑战 / 跟学打卡 / 答疑讨论
-    url: https://github.com/<owner>/mini-codex/discussions
+    url: https://github.com/<owner>/codex-in-rust/discussions
     about: 读者挑战官方不提供答案，请到 Discussions 贴你的解法互相评审；维护者不揭底。
