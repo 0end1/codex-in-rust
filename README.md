@@ -4,7 +4,7 @@
 > 第 22 章用它来开发它自己。
 
 ![CI](https://img.shields.io/github/actions/workflow/status/0end1/codex-in-rust/ci.yml?label=ci)
-[![在线阅读](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-mdBook-blue)](https://0end1.github.io/codex-in-rust/)
+[![在线阅读](https://img.shields.io/website?url=https%3A%2F%2F0end1.github.io%2Fcodex-in-rust%2F&label=%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB&up_message=%E5%9C%A8%E7%BA%BF&down_message=%E7%BB%B4%E6%8A%A4%E4%B8%AD&up_color=blue&down_color=lightgrey)](https://0end1.github.io/codex-in-rust/)
 ![License](https://img.shields.io/badge/%E6%96%87%E5%AD%97-CC%20BY--NC--ND%204.0-lightgrey)
 ![License](https://img.shields.io/badge/%E4%BB%A3%E7%A0%81-Apache--2.0-green)
 
