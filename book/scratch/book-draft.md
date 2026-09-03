@@ -5022,7 +5022,7 @@ pub enum SandboxPolicy {
 }
 ```
 
-![审批与沙箱是两个独立维度](assets/fig_policy_sandbox.png)
+![审批与沙箱是两个独立维度](../src/assets/fig_policy_sandbox.png)
 *图 1：四档审批策略与四档沙箱策略正交组合；每一格都是一个明确可测试的执行模式。数据来源：本书第 10–11 章策略模型，基于 OpenAI Codex 官方安全文档。*
 
 把它们耦合成一个枚举，比如 `enum Mode { SafeAsk, AutoSandboxed, FullAuto }`，很快会遇到无法表达的需求：我想**只读且不打扰**，或者**工作区可写但每次都问**。拆开之后，`--full-auto` 就不再是一个神秘安全等级，而是：
@@ -5398,7 +5398,7 @@ impl BwrapCommandBuilder {
 }
 ```
 
-![bwrap 后挂的更窄规则覆盖更宽规则](assets/fig_bwrap_layers.png)
+![bwrap 后挂的更窄规则覆盖更宽规则](../src/assets/fig_bwrap_layers.png)
 *图 2：Linux bwrap 的典型挂载顺序。`/repo` 先可写，`.git`/`.codex` 随后以更具体规则重新设为只读。数据来源：OpenAI Codex 上游 `codex-linux-sandbox` 实现说明。*
 
 图中顺序不是装饰，而是 bubblewrap 的语义：**后出现的、更具体的绑定覆盖先前的较宽规则。** 如果先 `--bind /repo/.git`，再 `--bind /repo`，后者会重新让 `.git` 可写；Codex 因此先建全盘只读，再叠加 `WritableRoot`，最后用 `.git`、解析后的 `gitdir:`、`.codex` 的只读绑定“钉死”敏感目录。
