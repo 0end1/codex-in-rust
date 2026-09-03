@@ -1,0 +1,43 @@
+name: pages
+
+# 书（mdBook）→ GitHub Pages 部署。
+# 在线阅读：https://0end1.github.io/codex-in-rust/
+# 一次性启用（作者侧）：仓库 Settings → Pages → Source 选 “GitHub Actions”。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: mdBook → GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装 mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: "latest"
+      - name: 构建书
+        run: cd book && mdbook build
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+      - name: 上传站点产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: book/book
+      - name: 部署到 Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

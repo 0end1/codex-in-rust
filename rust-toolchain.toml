@@ -1,6 +1,8 @@
-# 全仓库统一 MSRV/工具链。CI 与本地都用它，避免“在我机器上能编”。
-# TODO(发布前): 若书内测试最低支持版本另有要求，改成具体版本如 "1.85.0"。
+# 随书代码的编译基线（本地 / CI / 读者三方一致）。
+# 锁定到具体 stable 版本（1.98.0，2026-08），保证可复现：
+# 升级是显式动作 —— 改这里 → cargo test --workspace → 提交。
+# 正文无更低 MSRV 承诺（语法下限叙事见 ch03 的 let-else 注释，Rust 1.65+）。
 [toolchain]
-channel = "stable"
+channel = "1.98.0"
 components = ["rustfmt", "clippy"]
 profile = "minimal"

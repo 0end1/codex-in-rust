@@ -30,7 +30,7 @@ CLI 与测试都叫 **`mini-codex`** —— 仓库名是书，产品名是代码
 ## 快速开始（在线读 / 本地跟学）
 
 ```bash
-# 在线阅读（mdBook，部署后生效）
+# 在线阅读（mdBook，由 GitHub Pages 自动部署）
 open https://0end1.github.io/codex-in-rust/
 
 # 本地读
@@ -76,6 +76,18 @@ codex-in-rust/
 一个 checkpoint），最后 **复盘 Design Rationale**。卡住时用 `cargo test` 定位——
 书的验收测试就是“章末验收”的机器可判定版。
 
+## 在线阅读（GitHub Pages）
+
+书由 [.github/workflows/pages.yml](.github/workflows/pages.yml) 在每次 `main` 推送时自动构建并部署。
+启用只需一次（作者侧设置）：
+
+1. 仓库 **Settings → Pages**；
+2. **Build and deployment** 的 **Source** 选 **GitHub Actions**；
+3. 回到 **Actions** 跑一次 `pages`（或再次 push），几分钟后生效：
+   <https://0end1.github.io/codex-in-rust/>。
+
+> mdBook 构建产物不入库（`.gitignore`：`/book/book/`）；本地预览用 `mdbook build book/`。
+
 ## 贡献
 
 勘误（typo / 技术错误 / 代码不符）是我们最高价值的贡献，模板见
@@ -90,5 +102,3 @@ codex-in-rust/
 
 - 书稿（`book/`、README）：[CC BY-NC-ND 4.0](LICENSE-TEXT)
 - 代码与工具（`code/`、`tools/`、`.github/`、`scripts/`）：[Apache-2.0](LICENSE-CODE)
-
-发布前待办：`rust-toolchain.toml` 版本最终化。

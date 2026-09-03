@@ -6,6 +6,8 @@ description = "AI Agent 系统设计与 AI 软件工程——从零到自举，�
 src = "src"
 
 [output.html]
+# 部署于项目子路径（https://0end1.github.io/codex-in-rust/），供 search/404 等使用
+site-url = "https://0end1.github.io/codex-in-rust/"
 git-repository-url = "https://github.com/0end1/codex-in-rust"
 edit-url-template = "https://github.com/0end1/codex-in-rust/edit/main/book/src/{path}"
 default-theme = "light"
