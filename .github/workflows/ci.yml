@@ -1,0 +1,76 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # --- 书稿代码块一致性（历史勘误的自动化防线）---
+  verify-blocks:
+    name: 书稿代码块一致性检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: 逐块语法检查 + SUSPECT 分类
+        run: bash tools/verify/run_all.sh
+      # 当前策略：REAL-SUSPECT 只报告、不拦截（避免把既有教学片段误判为红）。
+      # 待 code/ 落地并校准分类器后，可在此将“REAL-SUSPECT 非空”改为硬失败。
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-out
+          path: book/scratch/_verify_out/
+
+  # --- 书（mdBook）构建与链接完整性 ---
+  book-build:
+    name: mdBook 构建
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装 mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+      - name: 构建
+        run: cd book && mdbook build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: book
+          path: book/book/
+
+  # --- Rust workspace（三 OS 矩阵，含第 11 章沙箱铺垫）---
+  rust:
+    name: cargo (fmt/clippy/test) · ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: rustfmt, clippy
+      - name: Linux 沙箱依赖（bubblewrap，代码落地后生效）
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ] && [ -d code/crates ]; then
+            sudo apt-get update && sudo apt-get install -y bubblewrap
+          fi
+          # TODO(代码落地): GitHub Linux runner 对 unshare 有限制，
+          #   第 11 章 bwrap 集成测试需先校准容器/runner 能力再完整启用。
+      - name: fmt + clippy + test
+        run: |
+          if [ -d code/crates ]; then
+            cd code
+            cargo fmt --check
+            cargo clippy --workspace --all-targets -- -D warnings
+            cargo test --workspace
+          else
+            echo "code/crates 尚未填实（见 code/README.md），跳过 Rust 检查。"
+          fi

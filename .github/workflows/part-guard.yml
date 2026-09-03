@@ -1,0 +1,34 @@
+name: part-tag-guard
+
+# 守护书前言承诺的 tag 链：part0..part5 每个都能检出，且 code/ 均通过 cargo test。
+# 触发：作者通过 scripts/checkpoint-tag.sh 打 tag 时，以及手动补跑。
+on:
+  push:
+    tags:
+      - 'part[0-5]'
+  workflow_dispatch:
+
+jobs:
+  guard:
+    name: 校验各 part tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: 逐一检出并测试
+        run: |
+          tags=$(git tag -l 'part[0-5]' | sort -V)
+          [ -z "$tags" ] && { echo "暂无 part tag"; exit 0; }
+          for t in $tags; do
+            echo "== 校验 $t =="
+            git worktree add -f "/tmp/wt-$t" "$t"
+            if [ -d "/tmp/wt-$t/code/crates" ]; then
+              (cd "/tmp/wt-$t/code" && cargo test --workspace) || exit 1
+              echo "== $t 测试通过 =="
+            else
+              echo "== $t 尚无 crates，仅校验检出 =="
+            fi
+            git worktree remove "/tmp/wt-$t" --force
+          done

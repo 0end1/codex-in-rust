@@ -1,0 +1,25 @@
+# --- 书（mdBook）构建产物 ---
+/book/book/
+
+# --- Rust ---
+/target
+**/target/
+**/*.rs.bk
+Cargo.lock.orig
+
+# --- 校验中间产物（本仓库只收脚本与结论，不收 rlib/临时输出）---
+*.rlib
+_verify_out/
+verify_tools/__pycache__/
+__pycache__/
+
+# --- 密钥 / 本地配置 ---
+.env
+.env.*
+*.key
+*.pem
+
+# --- 编辑器 / 系统 ---
+.DS_Store
+.idea/
+*.swp

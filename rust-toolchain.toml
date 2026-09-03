@@ -1,0 +1,6 @@
+# 全仓库统一 MSRV/工具链。CI 与本地都用它，避免“在我机器上能编”。
+# TODO(发布前): 若书内测试最低支持版本另有要求，改成具体版本如 "1.85.0"。
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

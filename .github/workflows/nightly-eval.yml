@@ -1,0 +1,37 @@
+name: nightly-eval
+
+# 第 20 章回归评测（20 任务基线）。真实模型调用按书约定只在 secrets 门控下发生。
+on:
+  schedule:
+    - cron: '17 3 * * 1'   # 每周一 03:17 UTC
+  workflow_dispatch:
+
+jobs:
+  eval:
+    name: 第 20 章回归评测基线
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: 无 key → 跳过真模型评测（逻辑测试仍跑）
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "未配置 OPENAI_API_KEY（secrets），跳过真模型评测。"
+            if [ -d code/crates ]; then
+              cd code && cargo test --workspace regression
+            fi
+            exit 0
+          fi
+          # TODO(代码落地): 用真实 key 运行第 20 章回归集并上传基线 artifact
+          # 例如:
+          #   cd code && cargo run --release -p mcx-cli -- eval --tasks regression --out ../../eval-baseline.json
+          echo "secrets 已配置，等 code/ 落地后在此执行 20 任务基线。"
+      - name: 上传基线（若有）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-baseline
+          path: eval-baseline*.json
+          if-no-files-found: ignore

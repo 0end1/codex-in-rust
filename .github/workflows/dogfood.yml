@@ -1,0 +1,29 @@
+name: dogfood
+
+# 第 22 章：用 mini-codex 开发 mini-codex。
+# 每周让 main 上的 mini-codex 对带 `dogfood` label 的 issue 提交一个真实 PR（自举演示）。
+on:
+  schedule:
+    - cron: '23 3 * * 1'   # 每周一 03:23 UTC
+  workflow_dispatch:
+
+jobs:
+  dogfood:
+    name: mini-codex 提 PR
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 自举演示（需先满足前置）
+        run: |
+          if [ ! -d code/crates ]; then
+            echo "code/ 尚未落地，跳过 dogfood。"
+            exit 0
+          fi
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "未配置 OPENAI_API_KEY，跳过 dogfood（只演示到代码层）。"
+            exit 0
+          fi
+          echo "TODO(代码落地): 从带 dogfood label 的 issue 取任务，调 mini-codex 生成补丁并开 PR。"
