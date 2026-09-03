@@ -10,6 +10,10 @@ mcx-protocol = { path = "../mcx-protocol" }
 mcx-tools = { path = "../mcx-tools" }
 mcx-sandbox = { path = "../mcx-sandbox" }
 tokio = { workspace = true }
+tokio-util = { workspace = true }
+futures-util = { workspace = true }
+reqwest = { workspace = true }
+tracing = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }
