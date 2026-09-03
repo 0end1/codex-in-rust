@@ -1,0 +1,3 @@
+# code/ workspace 统一格式。正文所有代码块均按此风格。
+max_width = 100
+use_small_heuristics = "Max"

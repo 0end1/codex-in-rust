@@ -1,0 +1,16 @@
+# 命令行入口：读 stdin 发 Op、消费 Event 渲染。引擎不认识界面。
+[package]
+name = "mcx-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "mcx-cli"
+path = "src/main.rs"
+
+[dependencies]
+mcx-core = { path = "../mcx-core" }
+mcx-protocol = { path = "../mcx-protocol" }
+mcx-tools = { path = "../mcx-tools" }
+mcx-sandbox = { path = "../mcx-sandbox" }
+tokio = { workspace = true }

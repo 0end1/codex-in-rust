@@ -1,0 +1,13 @@
+# 工具实现层：Tool trait 与内置工具（read_file / shell / … 随章加入）。
+[package]
+name = "mcx-tools"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mcx-protocol = { path = "../mcx-protocol" }
+mcx-sandbox = { path = "../mcx-sandbox" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }

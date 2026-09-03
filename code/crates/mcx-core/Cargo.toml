@@ -1,0 +1,16 @@
+# 核心引擎层：agent 循环（submission/turn/tool loop）、会话、工具分发。
+# 依赖方向：mcx-core → mcx-protocol / mcx-tools / mcx-sandbox（不反向）。
+[package]
+name = "mcx-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mcx-protocol = { path = "../mcx-protocol" }
+mcx-tools = { path = "../mcx-tools" }
+mcx-sandbox = { path = "../mcx-sandbox" }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }

@@ -1,0 +1,9 @@
+# 共享类型层（依赖图最底部）。所有 crate 的公共词汇表。
+[package]
+name = "mcx-protocol"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }

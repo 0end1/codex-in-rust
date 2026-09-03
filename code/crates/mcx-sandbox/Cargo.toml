@@ -1,0 +1,9 @@
+# 沙箱抽象层：统一接口 + 平台实现（bubblewrap / seatbelt / windows 令牌）。
+# 第 11 章才填充实现，当前保持可编译骨架。
+[package]
+name = "mcx-sandbox"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mcx-protocol = { path = "../mcx-protocol" }
