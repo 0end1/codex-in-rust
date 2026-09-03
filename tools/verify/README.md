@@ -28,6 +28,11 @@ python3 tools/verify/classify_suspects.py book/scratch/book-draft.md
 **REAL-SUSPECT** 为高优先级——历史勘误中“书中引用符号但全书无定义/变体缺失”一类，
 正是靠这个链路抓出来的。
 
+## 基线
+
+36 项 REAL-SUSPECT 的逐项人工定案见 [BASELINE.md](BASELINE.md)：H 方法宿主 13 / D 依赖上下文 19 / P 教学占位 4，
+全部属“写作风格预期形态”，无未处理真错误；并附 code/ 归位的宿主地图。
+
 ## 与 CI 的关系
 
 `.github/workflows/ci.yml` 的 `verify-blocks` 作业在每次 PR 中执行 `run_all.sh`，
