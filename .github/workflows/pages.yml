@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 安装 mdBook
-        uses: peaceiris/actions-mdbook@v1
+        uses: peaceiris/actions-mdbook@v2  # v1 仍跑 Node 20，被强制升 24 触发 deprecation warning
         with:
           mdbook-version: "latest"
       - name: 构建书
