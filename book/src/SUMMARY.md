@@ -29,4 +29,4 @@
 - [第 20 章　可观测性与回归评测](chapters/ch20.md)
 - [第 21 章　子代理与多 Agent](chapters/ch21.md)
 - [第 22 章　自举：用 mini-codex 开发 mini-codex](chapters/ch22.md)
-- [附录（A Rust 知识点路线图 / B Spec 模板 / C Design Rationale 速查）](appendix.md)
+- [附录（A Rust 知识点路线图 / B Spec 模板 / C Design Rationale 速查 / D 延伸阅读与源码索引）](appendix.md)
